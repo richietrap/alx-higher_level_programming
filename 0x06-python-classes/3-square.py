@@ -1,18 +1,31 @@
 #!/usr/bin/python3
-Square = __import__('3-square').Square
+# 0-square.py by RICHIE
+"""A module that defines a square """
 
-my_square_1 = Square(3)
-print("Area: {}".format(my_square_1.area()))
 
-try:
-    print(my_square_1.size)
-except Exception as e:
-    print(e)
+class Square:
+    """A class that represents a square"""
 
-try:
-    print(my_square_1.__size)
-except Exception as e:
-    print(e)
+    def __init__(self, size=0):
+        """Initializing this square class
+        Args:
+            size: represnets the size of the square defined
+        Raises:
+            TypeError: if size is not integer
+            ValueError: if size is less than zero
+        """
 
-my_square_2 = Square(5)
-print("Area: {}".format(my_square_2.area()))
+        if not isinstance(size, int):
+            raise TypeError('size must be an integer')
+        if size < 0:
+            raise ValueError('size must be >= 0')
+
+        self.__size = size
+
+    def area(self):
+        """
+        Calculate area of the square
+        Returns: The square of the size
+        """
+
+        return (self.__size ** 2)
